@@ -111,6 +111,131 @@
     color: var(--white);
 }
 
+/* ===== Desktop Dropdown ===== */
+.nav-dropdown {
+    position: relative;
+    
+}
+
+.nav-dropdown .nav-link {
+    position: relative;
+}
+
+.nav-dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 24px; /* bridge between link & dropdown */
+    background: transparent;
+}
+
+/* Dropdown container */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(20px);
+    border-radius: 22px;
+
+    padding: 16px;
+    min-width: 240px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.35s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+    z-index: 100;
+}
+/* Links inside dropdown */
+.dropdown-menu a {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+
+    color: var(--black);
+    padding: 10px 16px;
+    border-radius: 999px;
+
+    background: linear-gradient(
+        to right,
+        var(--gold-500) 50%,
+        transparent 50%
+    );
+    background-size: 200% 100%;
+    background-position: right;
+
+    transition: all 0.35s ease;
+}
+
+.dropdown-menu a:hover {
+    background-position: left;
+    color: var(--white);
+}
+
+/* Show dropdown on hover */
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.mobile-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mobile-dropdown-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+
+    color: var(--black);
+    background: transparent;
+}
+
+.mobile-dropdown-toggle .arrow {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+/* Submenu */
+.mobile-submenu {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 8px;
+}
+
+/* Active state */
+.mobile-dropdown.active .mobile-submenu {
+    display: flex;
+}
+
+.mobile-dropdown.active .arrow {
+    transform: rotate(45deg);
+}
+
 
 /* CTA — ORIGINAL (CORRECT) */
 .consultation-btn {
@@ -674,104 +799,148 @@
     transition-delay: 0.4s;
 }
 
-        /* Why Choose Section */
-        .why-section {
-            padding: 100px 50px;
-            background: var(--white);
-        }
+     .why-section {
+    padding: 120px 50px;
+    background: var(--white);
+}
 
-        .why-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+.why-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
-        .why-header {
-            text-align: center;
-            margin-bottom: 70px;
-        }
+/* Why Choose Tonmor*/
+.why-layout {
+     display: grid;
+    grid-template-columns: 520px 1fr;
+    gap: 90px;
+    align-items: flex-start;
+}
 
-        .why-header h2 {
-            font-size: 48px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            color: var(--gold-900);
-            letter-spacing: 1px;
-        }
+/* LEFT SIDE */
+.why-left .section-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2px;
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid var(--gold-300);
+    border-radius: 20px;
+}
 
-        .why-header .subtitle {
-            font-size: 20px;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
+.why-left h2 {
+    font-size: 48px;
+    font-weight: 800;
+    margin: 10px 0 5px;
+    color: var(--gold-900);
+    letter-spacing: 1px;
+    line-height: 1.05;
+}
 
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-        }
+.why-left .subtitle {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin-bottom: 40px;
+    font-weight: 500;
 
-        .why-card {
-            background: var(--white);
-            border-radius: 26px;
-            padding: 45px 35px;
-            box-shadow: 0 18px 40px rgba(156, 88, 25, 0.12);
-            transition: all 0.45s ease;
-            overflow: hidden;
-            cursor: pointer;
-            position: relative;
-        }
+}
 
-        .why-card::before {
-            content: "";
-            position: absolute;
-            top: -30px;
-            right: -30px;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, rgba(156, 88, 25, 0.18), transparent 70%);
-            border-radius: 50%;
-            opacity: 0.4;
-            transition: all 0.45s ease;
-        }
+.why-image {
+     width: 100%;
+    max-width: 520px;
+    border-radius: 28px;
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.14);
+}
+/* RIGHT SIDE GRID */
+.why-grid {
+     display: grid;
+    grid-template-columns: repeat(2, minmax(320px, 380px));
+    gap: 35px;
+    justify-content: start;
+}
 
-        .why-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 35px 70px rgba(156, 88, 25, 0.18);
-            background: var(--bg-soft);
-        }
+/* CARD (KEEPING YOUR HOVER STYLE) */
+.why-card {
+    background: var(--white);
+    border-radius: 26px;
+    padding: 38px 34px;
+    box-shadow: 0 18px 40px rgba(156, 88, 25, 0.12);
+    transition: all 0.45s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
 
-        .why-card:hover::before {
-            transform: scale(1.2);
-            opacity: 0.6;
-        }
+.why-card::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(156, 88, 25, 0.18), transparent 70%);
+    border-radius: 50%;
+    opacity: 0.4;
+    transition: all 0.45s ease;
+}
 
-        .why-card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 14px;
-            color: var(--text-dark);
-            position: relative;
-            z-index: 1;
-        }
+.why-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 35px 70px rgba(156, 88, 25, 0.18);
+    background: var(--bg-soft);
+}
 
-        .why-card p {
-            font-size: 15px;
-            line-height: 1.8;
-            color: var(--text-muted);
-            position: relative;
-            z-index: 1;
-        }
+.why-card:hover::before {
+    transform: scale(1.2);
+    opacity: 0.6;
+}
 
-        .why-card h3::before {
-            content: "";
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: var(--gold-500);
-            border-radius: 50%;
-            margin-right: 12px;
-            vertical-align: middle;
-        }
+/* ICON */
+.why-icon {
+    width: 54px;
+    height: 54px;
+    background: var(--gold-500);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 22px;
+    margin-bottom: 18px;
+    transition: all 0.35s ease;
+}
+
+.why-card:hover .why-icon {
+    background: var(--gold-700);
+    transform: scale(1.08);
+}
+
+/* TEXT */
+.why-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--text-dark);
+    position: relative;
+    z-index: 1;
+}
+
+.why-card p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    position: relative;
+    z-index: 1;
+}
+
+/* REMOVE OLD DOT */
+.why-card h3::before {
+    display: none;
+}
+
 
         /* Initial state */
 .why-header,
@@ -885,8 +1054,8 @@
     inset: 0;
     background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.1),
-        rgba(0,0,0,0.75)
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.479)
     );
     z-index: 1;
 }
@@ -1145,6 +1314,42 @@
             .footer-content {
                 grid-template-columns: 1fr 1fr;
             }
+
+             /* Layout */
+    .why-layout {
+        grid-template-columns: 420px 1fr;
+        gap: 60px;
+    }
+
+    /* LEFT */
+    .why-left h2 {
+        font-size: 42px;
+    }
+
+    .why-left .subtitle {
+        font-size: 17px;
+        margin-bottom: 32px;
+    }
+
+    .why-image {
+        max-width: 420px;
+        border-radius: 24px;
+    }
+
+    /* RIGHT GRID */
+    .why-grid {
+        grid-template-columns: repeat(2, minmax(280px, 1fr));
+        gap: 28px;
+    }
+
+    /* CARD */
+    .why-card {
+        padding: 34px 30px;
+    }
+
+    .why-card h3 {
+        font-size: 21px;
+    }
         }
 
         @media (max-width: 768px) {
@@ -1249,6 +1454,45 @@
 
     .project-info p {
         font-size: 12px;
+    }
+
+     /* Layout becomes stacked */
+    .why-layout {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    /* LEFT */
+    .why-left h2 {
+        font-size: 38px;
+        line-height: 1.1;
+    }
+
+    .why-left .subtitle {
+        font-size: 16px;
+        max-width: 100%;
+    }
+
+    .why-image {
+        max-width: 100%;
+        border-radius: 24px;
+    }
+
+    /* Cards: still 2 per row */
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 26px;
+    }
+
+    /* Card density */
+    .why-card {
+        padding: 30px 26px;
+    }
+
+    .why-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
     }
 
     
@@ -1410,6 +1654,70 @@
     .consultation-btn .arrow {
         display: none; /* cleaner on tiny screens */
     }
+
+     /* Layout */
+    .why-layout {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    /* LEFT SIDE */
+    .why-left .section-label {
+        font-size: 12px;
+        padding: 6px 16px;
+        margin-bottom: 6px;
+    }
+
+    .why-left h2 {
+        font-size: 34px;
+        line-height: 1.1;
+        letter-spacing: 0.6px;
+        margin: 10px 0 10px;
+    }
+
+    .why-left .subtitle {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 28px;
+    }
+
+    .why-image {
+        max-width: 100%;
+        border-radius: 22px;
+    }
+
+    /* RIGHT SIDE GRID */
+    .why-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        justify-content: stretch;
+    }
+
+    /* CARD */
+    .why-card {
+        padding: 28px 24px;
+        border-radius: 22px;
+    }
+
+    /* ICON */
+    .why-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    /* TEXT */
+    .why-card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .why-card p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
 }
     </style>
 </head>
@@ -1426,7 +1734,18 @@
         <nav class="main-nav">
             <a href="#home">Home</a>
             <a href="#portfolio">Portfolio</a>
-            <a href="#departments">Departments</a>
+        
+            <!-- Departments Dropdown -->
+            <div class="nav-dropdown">
+                <a href="#departments" class="nav-link">Departments</a>
+                <div class="dropdown-menu">
+                    <a href="#design-engineering">Design & Engineering</a>
+                    <a href="#construction">Construction</a>
+                    <a href="#ca-services">CA Services</a>
+                    <a href="#waterfront">Waterfront Solutions</a>
+                </div>
+            </div>
+        
             <a href="#services">Services</a>
         </nav>
 
@@ -1449,11 +1768,27 @@
 
     <!-- MOBILE MENU -->
     <nav class="mobile-menu">
+    
         <a href="#home">Home</a>
         <a href="#portfolio">Portfolio</a>
-        <a href="#departments">Departments</a>
+    
+        <!-- Mobile Departments Dropdown -->
+        <div class="mobile-dropdown">
+            <button class="mobile-dropdown-toggle">
+                Departments
+                <span class="arrow">+</span>
+            </button>
+    
+            <div class="mobile-submenu">
+                <a href="#design-engineering">Design & Engineering</a>
+                <a href="#construction">Construction</a>
+                <a href="#ca-services">CA Services</a>
+                <a href="#waterfront">Waterfront Solutions</a>
+            </div>
+        </div>
+    
         <a href="#services">Services</a>
-
+    
         <a href="#contact" class="mobile-cta">Consultation</a>
     </nav>
 
@@ -1570,58 +1905,63 @@
     </section>
 
     <!-- Why Choose Section -->
-    <section class="why-section" id="services">
+    <section class="why-section">
         <div class="why-container">
-            <div class="why-header">
-                <h2>WHY CHOOSE TONMOR</h2>
-                <p class="subtitle">A Technical Partner You Can Trust</p>
-            </div>
-
-        <div class="why-grid">
-        
-            <div class="why-card">
-                <div class="why-card-inner">
-                    <h3>Engineering-Led Approach</h3>
-                    <p>
-                        Every project is driven by technical expertise, ensuring sound design,
-                        structural integrity, and reliable performance.
-                    </p>
+    
+            <div class="why-layout">
+    
+                <!-- LEFT COLUMN -->
+                <div class="why-left">
+                    <span class="section-label">02 — Why Choose Us</span>
+                    <h2>WHY CHOOSE TONMOR</h2>
+                    <p class="subtitle">A Technical Partner You Can Trust</p>
+    
+                    <img src="image/tonmo01342.png" alt="Tonmor project" class="why-image">
                 </div>
-            </div>
-        
-            <div class="why-card">
-                <div class="why-card-inner">
-                    <h3>Regulatory Confidence</h3>
-                    <p>
-                        We understand the complexities of permits, codes, and compliance—so your
-                        project moves forward without unnecessary delays.
-                    </p>
+    
+                <!-- RIGHT COLUMN -->
+                <div class="why-grid">
+    
+                    <div class="why-card">
+                        <div class="why-icon">⚙️</div>
+                        <h3>Engineering-Led Approach</h3>
+                        <p>
+                            Every project is driven by technical expertise, ensuring sound design,
+                            structural integrity, and reliable performance.
+                        </p>
+                    </div>
+    
+                    <div class="why-card">
+                        <div class="why-icon">📐</div>
+                        <h3>Regulatory Confidence</h3>
+                        <p>
+                            We understand permits, codes, and compliance—so projects move forward
+                            without unnecessary delays.
+                        </p>
+                    </div>
+    
+                    <div class="why-card">
+                        <div class="why-icon">🏗️</div>
+                        <h3>Precision Construction</h3>
+                        <p>
+                            Built exactly to specification with attention to detail at every stage.
+                        </p>
+                    </div>
+    
+                    <div class="why-card">
+                        <div class="why-icon">🤝</div>
+                        <h3>Client-Focused Delivery</h3>
+                        <p>
+                            Clear communication, accountability, and results aligned with your goals.
+                        </p>
+                    </div>
+    
                 </div>
+    
             </div>
-        
-            <div class="why-card">
-                <div class="why-card-inner">
-                    <h3>Precision Construction</h3>
-                    <p>
-                        Built exactly to specification, with attention to detail at every stage
-                        of the process.
-                    </p>
-                </div>
-            </div>
-        
-            <div class="why-card">
-                <div class="why-card-inner">
-                    <h3>Client-Focused Delivery</h3>
-                    <p>
-                        Clear communication, accountability, and results that align with your
-                        vision and goals.
-                    </p>
-                </div>
-            </div>
-        
-        </div>
         </div>
     </section>
+
 
     <!-- Projects Section -->
     <section class="projects-section" id="portfolio">
@@ -1830,6 +2170,12 @@
         toggle.addEventListener('click', () => {
             menu.classList.toggle('active');
         });
+
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    toggle.parentElement.classList.toggle('active');
+                });
+            });
     </script>
 </body>
 
